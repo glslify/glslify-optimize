@@ -1,6 +1,6 @@
 {
   "name": "glslify-optimize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A browserify transform stream that optimizes your glslify shaders",
   "main": "index.js",
   "license": "MIT",
@@ -20,7 +20,6 @@
   "devDependencies": {
     "a-big-triangle": "0.0.0",
     "gl-texture2d": "^1.0.1",
-    "glsl-dither": "^1.0.1",
     "glsl-dither": "^1.0.0",
     "gl-context": "^0.1.0",
     "glslify": "^1.4.0",
