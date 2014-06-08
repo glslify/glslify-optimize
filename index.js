@@ -5,7 +5,7 @@ var through   = require('through2')
 var esprima   = require('esprima')
 var astw      = require('astw')
 
-require('debug').log = console.error
+debug.type = 'error'
 
 module.exports = transform
 
@@ -28,9 +28,7 @@ function transform(filename) {
     var walk = astw(ast)
 
     debug('Original source:')
-    debug('\n----------------')
-    debug(src)
-    debug('')
+    debug('\n' + src)
 
     walk(function(node) {
       if (node.type !== 'Literal') return
@@ -50,24 +48,20 @@ function transform(filename) {
       var vert = args[0].value
       var frag = args[1].value
 
-      debug('\nOriginal fragment shader:')
-      debug('-------------------------')
-      debug(frag)
+      debug('Original fragment shader:')
+      debug('\n' + frag)
 
-      debug('\nOriginal vertex shader:')
-      debug('-----------------------')
-      debug(vert)
+      debug('Original vertex shader:')
+      debug('\n' + vert)
 
       frag = optimize.frag(frag)
       vert = optimize.vert(vert)
 
-      debug('\nOptimized vertex shader:')
-      debug('------------------------')
-      debug(vert)
+      debug('Optimized vertex shader:')
+      debug('\n' + vert)
 
-      debug('\nOptimized fragment shader:')
-      debug('--------------------------')
-      debug(frag)
+      debug('Optimized fragment shader:')
+      debug('\n' + frag)
 
       args[0].value = vert
       args[1].value = frag

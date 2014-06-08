@@ -5,17 +5,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "DEBUG='glslify-optimize' browserify -t glslify -t ./ test/fixture.js > /dev/null",
+    "test": "DEBUG='glslify-optimize' DEBUG_COLORS=true browserify -t glslify -t ./ test/fixture.js > /dev/null",
     "start": "cd test && beefy fixture.js -- -t glslify -t ../"
   },
   "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
   "dependencies": {
-    "glsl-optimizer": "https://github.com/kkaefer/glsl-optimizer/archive/amalgamation.tar.gz",
+    "astw": "^1.2.0",
+    "debug": "git://github.com/timoxley/debug#console_error",
     "escodegen": "^1.3.3",
-    "through2": "^0.5.1",
     "esprima": "^1.2.2",
-    "debug": "^1.0.1",
-    "astw": "^1.2.0"
+    "glsl-optimizer": "https://github.com/kkaefer/glsl-optimizer/archive/amalgamation.tar.gz",
+    "through2": "^0.5.1"
   },
   "devDependencies": {
     "a-big-triangle": "0.0.0",
