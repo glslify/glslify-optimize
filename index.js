@@ -1,17 +1,17 @@
-var debug     = require('debug')('glslify-optimize')
 var escodegen = require('escodegen')
 var optimize  = require('./optimize')
 var through   = require('through2')
 var esprima   = require('esprima')
 var astw      = require('astw')
 
-debug.type = 'error'
-
 module.exports = transform
 
-function transform(filename) {
-  if (!/glslify/.test(filename)) return through()
+function debug(){}
+if (process.env.DEBUG === 'glslify-optimize') {
+  debug = console.error
+}
 
+function transform(filename) {
   var stream = through(write, flush)
   var buffer = []
 
@@ -23,7 +23,13 @@ function transform(filename) {
   }
 
   function flush() {
-    var src = buffer.join('\n')
+    var src = buffer.join('')
+    if (src.indexOf('glslify') === -1) {
+      this.push(src)
+      this.push(null)
+      return
+    }
+
     var ast = esprima.parse(src)
     var walk = astw(ast)
 
@@ -67,7 +73,8 @@ function transform(filename) {
       args[1].value = frag
     })
 
-    this.push(escodegen.generate(ast))
+    this.push(src = escodegen.generate(ast))
     this.push(null)
+    debug(src)
   }
 }
