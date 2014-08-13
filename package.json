@@ -14,7 +14,7 @@
     "debug": "git://github.com/timoxley/debug#console_error",
     "escodegen": "^1.3.3",
     "esprima": "^1.2.2",
-    "glsl-optimizer": "https://github.com/kkaefer/glsl-optimizer/archive/amalgamation.tar.gz",
+    "mapbox-glsl-optimizer": "^0.1.1",
     "through2": "^0.5.1"
   },
   "devDependencies": {
