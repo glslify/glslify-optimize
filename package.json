@@ -1,6 +1,6 @@
 {
   "name": "glslify-optimize",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A browserify transform stream that optimizes your glslify shaders",
   "main": "index.js",
   "license": "MIT",
